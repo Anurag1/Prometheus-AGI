@@ -1,0 +1,8 @@
+fastapi
+uvicorn[standard]
+celery
+redis
+ollama
+requests
+beautifulsoup4
+yfinance

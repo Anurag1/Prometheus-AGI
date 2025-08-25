@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prometheus AGI</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <h1>Prometheus AGI</h1>
+            <button id="newProjectBtn">+ New Project</button>
+            <div id="projectList" class="project-list"></div>
+        </aside>
+        <main class="main-content">
+            <div id="welcomeScreen" class="welcome-screen">
+                <h2>Welcome to the Prometheus AGI Framework</h2>
+                <p>Create a new project or select an existing one to begin.</p>
+            </div>
+            <div id="projectDetail" class="project-detail" style="display: none;">
+                <h2 id="projectName"></h2>
+                <p id="projectGoal"></p>
+                <button id="runAgentBtn">Run Agent</button>
+                <hr>
+                <h3>Latest Hypotheses</h3>
+                <pre id="projectHypotheses"></pre>
+                <h3>Full State</h3>
+                <pre id="projectState"></pre>
+            </div>
+        </main>
+    </div>
+    <div id="newProjectModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Create New Project</h2>
+            <form id="newProjectForm">
+                <input type="text" id="newProjectName" placeholder="Project Name (e.g., 'WebApp_Monitor')" required>
+                <textarea id="newProjectGoal" placeholder="Project Goal (e.g., 'Monitor webapp.com for new subdomains...')" required></textarea>
+                <button type="submit">Create</button>
+            </form>
+        </div>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
+</html>

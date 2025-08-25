@@ -1,0 +1,21 @@
+# Use an official Python runtime as a parent image
+FROM python:3.11-slim
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Set environment variables for Celery and Python
+ENV CELERY_BROKER_URL=redis://redis:6379/0
+ENV CELERY_RESULT_BACKEND=redis://redis:6379/0
+ENV PYTHONUNBUFFERED=1
+
+# Install Go for the toolkit dependencies (like subfinder, httpx if needed)
+# For a general-purpose agent, we'll keep this minimal. You can add them back if you need them.
+RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
+
+# Copy the requirements file and install dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the rest of the application code into the container
+COPY ./backend /app
