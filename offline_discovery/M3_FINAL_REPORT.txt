@@ -1,0 +1,2 @@
+M3 PASS
+Recovered hidden compositional law offline; exact held-out predictions; max error 0.
