@@ -1,0 +1,20 @@
+name: General World Discovery
+
+on:
+  push:
+    branches: [feat/autonomous-offline-discovery]
+  pull_request:
+    branches: [feat/offline-discovery-benchmark]
+
+jobs:
+  discovery:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run representation-free discovery
+        run: python -m unittest offline_discovery.test_general_world -v
+      - name: Emit discovery result
+        run: python -m offline_discovery.general_world
