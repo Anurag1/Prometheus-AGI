@@ -1,0 +1,20 @@
+name: Offline Discovery Benchmark
+
+on:
+  push:
+    branches: [main, feat/offline-discovery-benchmark]
+  pull_request:
+    branches: [main]
+
+jobs:
+  offline-discovery:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run network-isolated benchmark
+        run: python -m unittest offline_discovery.test_benchmark -v
+      - name: Run discovery CLI
+        run: python -m offline_discovery.benchmark
