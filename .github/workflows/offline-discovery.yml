@@ -16,5 +16,9 @@ jobs:
           python-version: '3.12'
       - name: Run network-isolated benchmark
         run: python -m unittest offline_discovery.test_benchmark -v
+      - name: Run Prometheus-style integration
+        run: python -m unittest offline_discovery.test_integration -v
       - name: Run discovery CLI
         run: python -m offline_discovery.benchmark
+      - name: Run integrated discovery CLI
+        run: python -m offline_discovery.offline_agent
