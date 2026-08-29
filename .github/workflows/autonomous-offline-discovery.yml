@@ -1,0 +1,20 @@
+name: Autonomous Offline Discovery
+
+on:
+  push:
+    branches: [feat/autonomous-offline-discovery]
+  pull_request:
+    branches: [main]
+
+jobs:
+  discovery:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run autonomous discovery test
+        run: python -m unittest offline_discovery.test_autonomous_lab -v
+      - name: Showcase discovered theory
+        run: python -m offline_discovery.autonomous_lab
